@@ -707,7 +707,7 @@ Red_Guy = sprites.create(img`
 controller.moveSprite(Red_Guy, 100, 100)
 Red_Guy.setFlag(SpriteFlag.StayInScreen, true)
 info.setLife(5)
-game.showLongText("The rain forest is being destroyed! Dodge the vehicles to stay alive!", DialogLayout.Bottom)
+game.showLongText("The rain forest is being destroyed! Dodge the bulldozers to stay alive!", DialogLayout.Bottom)
 game.onUpdate(function () {
     Moving = controller.up.isPressed() || (controller.down.isPressed() || (controller.left.isPressed() || controller.right.isPressed()))
     if (!(Moving)) {
