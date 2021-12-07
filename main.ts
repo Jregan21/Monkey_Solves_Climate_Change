@@ -284,11 +284,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
-scene.onOverlapTile(SpriteKind.Enemy, assets.tile`myTile0`, function (sprite, location) {
-    sprite.destroy()
-    info.changeLifeBy(-1)
-    scene.cameraShake(4, 500)
-})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Red_Guy,
@@ -553,22 +548,22 @@ game.onUpdate(function () {
 })
 game.onUpdateInterval(5000, function () {
     orangutan = sprites.create(img`
-        . . . . f f f f f . . . . . . . 
-        . . . f 4 4 4 4 4 f . . . . . . 
-        . . f d d d d 4 4 4 f . . . . . 
-        . c d f d d f d 4 4 f f . . . . 
-        . c d f d d f d 4 4 d d f . . . 
-        c d 4 4 d d d d 4 4 b d c . . . 
-        c d d d d c d d 4 4 b d c . . . 
-        c c c c c d d 4 4 4 f c . . . . 
-        . f d d d d 4 4 4 f f . . . . . 
-        . . f f f f f 4 4 4 4 f . . . . 
-        . . . . f f 4 4 4 4 4 4 f . f f 
-        . . . f 4 4 f 4 4 f 4 4 f . 4 f 
-        . . f 4 4 f 4 4 f 4 4 4 f . 4 f 
-        . f b d f d b f b b f 4 f f 4 f 
-        . f d d f d d f d d b 4 f f f f 
-        . . f f f f f f f f f f f f f . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . 5 5 . . . . . . . . . . . . . 
+        . . 5 5 . . . . . . f f f f . . 
+        . . 5 5 f f . . . f f 1 1 f . . 
+        . . 5 5 f 5 . . . f f 1 1 f f . 
+        . 5 5 5 . 5 5 . . f f 1 1 1 f . 
+        5 5 5 . . 5 5 . . f f f f f f . 
+        . . . . . . 5 f 5 f 1 f 5 5 5 5 
+        . . . 5 5 5 5 f 5 f f 5 f f 5 5 
+        . . 5 5 4 4 4 f 5 f 5 f f f f 5 
+        . . 5 5 f f 5 f 5 5 f f 1 1 f f 
+        . . . f 1 1 f 5 5 5 f f 1 1 f f 
+        . . . f 1 1 f . . . . f f f f . 
+        . . . . f f . . . . . . f f . . 
         `, SpriteKind.Enemy)
     orangutan.x = scene.screenWidth()
     orangutan.vx = -10
