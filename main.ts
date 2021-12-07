@@ -3,7 +3,7 @@ namespace SpriteKind {
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . . . . f f f f f . . . . 
         . . . . . . f e e e e e f . . . 
@@ -96,7 +96,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . f f f f f . . . . . . . 
         . . . f e e e e e f . . . . . . 
@@ -193,7 +193,7 @@ statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . . . . f f f f f . . . . 
         . . . . . . f e e e e e f . . . 
@@ -291,7 +291,7 @@ scene.onOverlapTile(SpriteKind.Enemy, assets.tile`myTile0`, function (sprite, lo
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . . . . f f f f f . . . . 
         . . . . . . f e e e e e f . . . 
@@ -563,7 +563,7 @@ let Counter = 0
 let projectile_2: Sprite = null
 let Ability_2: Sprite = null
 let Cooldown = false
-let Red_Guy: Sprite = null
+let Monkey: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -686,7 +686,7 @@ scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     `)
-Red_Guy = sprites.create(img`
+Monkey = sprites.create(img`
     . . . . f f f f f . . . . . . . 
     . . . f e e e e e f . . . . . . 
     . . f d d d d e e e f . . . . . 
@@ -704,14 +704,14 @@ Red_Guy = sprites.create(img`
     . f d d f e e e d d b e f f f f 
     . . f f f f f f f f f f f f f . 
     `, SpriteKind.Player)
-controller.moveSprite(Red_Guy, 100, 100)
-Red_Guy.setFlag(SpriteFlag.StayInScreen, true)
+controller.moveSprite(Monkey, 100, 100)
+Monkey.setFlag(SpriteFlag.StayInScreen, true)
 info.setLife(5)
 game.showLongText("The rain forest is being destroyed! Dodge the bulldozers to stay alive!", DialogLayout.Bottom)
 game.onUpdate(function () {
     Moving = controller.up.isPressed() || (controller.down.isPressed() || (controller.left.isPressed() || controller.right.isPressed()))
     if (!(Moving)) {
-        animation.stopAnimation(animation.AnimationTypes.All, Red_Guy)
+        animation.stopAnimation(animation.AnimationTypes.All, Monkey)
     }
 })
 game.onUpdateInterval(5000, function () {
