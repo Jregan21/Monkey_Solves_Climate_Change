@@ -555,7 +555,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     scene.cameraShake(4, 500)
 })
 let statusbar_monkey: StatusBarSprite = null
-let enemyShip: Sprite = null
+let Car: Sprite = null
 let status_bar_orangutan: StatusBarSprite = null
 let orangutan: Sprite = null
 let Moving = false
@@ -1258,7 +1258,7 @@ game.onUpdateInterval(2000, function () {
     }
 })
 game.onUpdateInterval(2000, function () {
-    enemyShip = sprites.create(img`
+    Car = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . 2 2 2 2 2 2 2 2 . . 
         . . . . . 2 c 2 2 2 2 2 2 4 2 . 
@@ -1277,7 +1277,7 @@ game.onUpdateInterval(2000, function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     animation.runImageAnimation(
-    enemyShip,
+    Car,
     [img`
         . . . . . . . e e e e e . . . . 
         . . . . . e e 2 2 2 2 2 e . . . 
@@ -1350,11 +1350,11 @@ game.onUpdateInterval(2000, function () {
     100,
     true
     )
-    enemyShip.x = scene.screenWidth()
-    enemyShip.vx = -20
-    enemyShip.y = randint(10, scene.screenHeight() - 10)
+    Car.x = scene.screenWidth()
+    Car.vx = -20
+    Car.y = randint(10, scene.screenHeight() - 10)
     statusbar_monkey = statusbars.create(15, 2, StatusBarKind.EnemyHealth)
     statusbar_monkey.setColor(5, 12)
     statusbar_monkey.max = 100
-    statusbar_monkey.attachToSprite(enemyShip)
+    statusbar_monkey.attachToSprite(Car)
 })
