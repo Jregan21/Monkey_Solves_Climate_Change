@@ -542,7 +542,7 @@ function Show_Character_Selection () {
 	
 }
 sprites.onDestroyed(SpriteKind.Player, function (sprite) {
-    game.splash("Oh no, you died!")
+    game.splash("Oh no, the forest has been destroyed!")
     game.reset()
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
