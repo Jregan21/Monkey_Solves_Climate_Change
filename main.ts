@@ -3,7 +3,7 @@ namespace SpriteKind {
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . . . . f f f f f . . . . 
         . . . . . . f e e e e e f . . . 
@@ -96,7 +96,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . f f f f f . . . . . . . 
         . . . f e e e e e f . . . . . . 
@@ -193,7 +193,7 @@ statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . . . . f f f f f . . . . 
         . . . . . . f e e e e e f . . . 
@@ -286,7 +286,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Red_Guy,
+    Monkey,
     [img`
         . . . . . . . f f f f f . . . . 
         . . . . . . f e e e e e f . . . 
@@ -390,12 +390,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     otherSprite.destroy(effects.bubbles, 500)
     scene.cameraShake(4, 500)
 })
-let statusbar_monkey: StatusBarSprite = null
-let enemyShip: Sprite = null
-let status_bar_orangutan: StatusBarSprite = null
-let orangutan: Sprite = null
+let statusbar_Car: StatusBarSprite = null
+let Red_Car: Sprite = null
+let status_bar_BullDozer: StatusBarSprite = null
+let BullDozer: Sprite = null
 let Moving = false
-let Red_Guy: Sprite = null
+let Monkey: Sprite = null
 scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
@@ -518,7 +518,7 @@ scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     `)
-Red_Guy = sprites.create(img`
+Monkey = sprites.create(img`
     . . . . f f f f f . . . . . . . 
     . . . f e e e e e f . . . . . . 
     . . f d d d d e e e f . . . . . 
@@ -536,18 +536,18 @@ Red_Guy = sprites.create(img`
     . f d d f e e e d d b e f f f f 
     . . f f f f f f f f f f f f f . 
     `, SpriteKind.Player)
-controller.moveSprite(Red_Guy, 100, 100)
-Red_Guy.setFlag(SpriteFlag.StayInScreen, true)
+controller.moveSprite(Monkey, 100, 100)
+Monkey.setFlag(SpriteFlag.StayInScreen, true)
 info.setLife(5)
 game.showLongText("The rain forest is being destroyed! Dodge the bulldozers to stay alive!", DialogLayout.Bottom)
 game.onUpdate(function () {
     Moving = controller.up.isPressed() || (controller.down.isPressed() || (controller.left.isPressed() || controller.right.isPressed()))
     if (!(Moving)) {
-        animation.stopAnimation(animation.AnimationTypes.All, Red_Guy)
+        animation.stopAnimation(animation.AnimationTypes.All, Monkey)
     }
 })
 game.onUpdateInterval(5000, function () {
-    orangutan = sprites.create(img`
+    BullDozer = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -565,35 +565,35 @@ game.onUpdateInterval(5000, function () {
         . . . f 1 1 f . . . . f f f f . 
         . . . . f f . . . . . . f f . . 
         `, SpriteKind.Enemy)
-    orangutan.x = scene.screenWidth()
-    orangutan.vx = -10
-    orangutan.y = randint(10, scene.screenHeight() - 10)
-    status_bar_orangutan = statusbars.create(50, 2, StatusBarKind.EnemyHealth)
-    status_bar_orangutan.setColor(5, 12)
-    status_bar_orangutan.max = 150
-    status_bar_orangutan.attachToSprite(orangutan)
+    BullDozer.x = scene.screenWidth()
+    BullDozer.vx = -10
+    BullDozer.y = randint(10, scene.screenHeight() - 10)
+    status_bar_BullDozer = statusbars.create(50, 2, StatusBarKind.EnemyHealth)
+    status_bar_BullDozer.setColor(5, 12)
+    status_bar_BullDozer.max = 150
+    status_bar_BullDozer.attachToSprite(BullDozer)
 })
 game.onUpdateInterval(2000, function () {
-    enemyShip = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 2 2 2 2 2 2 2 2 . . 
-        . . . . . 2 c 2 2 2 2 2 2 4 2 . 
-        . . . . 2 c c 2 2 2 2 2 2 4 c 2 
-        . . d 2 4 c c 2 4 4 4 4 4 4 c c 
-        . d 2 2 4 c b e e e e e e e 2 c 
-        . 2 2 2 4 b e e b b b e b b e 2 
-        . 2 2 2 2 2 e b b b b e b b b e 
-        . 2 2 2 2 e 2 2 2 2 2 e 2 2 2 e 
-        . 2 d d 2 e f e e e f e e e e e 
-        . d d 2 e e e f e e f e e e e e 
-        . e e e e e e e f f f e e e e e 
-        . e e e e f f f e e e e f f f f 
-        . . . e f f f f f e e f f f f f 
-        . . . . f f f f . . . . f f f . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
+    Red_Car = sprites.create(img`
+        . . . . . . . e e e e e . . . . 
+        . . . . . e e 2 2 2 2 2 e . . . 
+        . . . . e e 2 2 2 2 2 2 2 e . . 
+        . . . . e 9 4 2 2 2 2 2 4 b e . 
+        . . e e 9 9 4 4 2 2 2 2 4 9 b e 
+        . e 2 2 9 9 4 4 4 2 2 2 4 9 9 e 
+        e 2 2 2 9 9 2 4 4 4 4 4 2 9 9 e 
+        e 2 2 2 9 9 e e e e e e e 9 9 e 
+        e 2 2 2 9 b e b b b e b e b 9 e 
+        e 2 e e e e b b b b e b b e b e 
+        e e 3 3 e e 2 2 2 2 e 2 2 e e e 
+        e 3 3 e e e e e e e e e e e e e 
+        e e e e e e e e e e e e e e e e 
+        e e e e f f f e e e e f f f e e 
+        . e e f b c c f e e f b c c f . 
+        . . . . b b f . . . . b b f . . 
+        `, SpriteKind.Player)
     animation.runImageAnimation(
-    enemyShip,
+    Red_Car,
     [img`
         . . . . . . . e e e e e . . . . 
         . . . . . e e 2 2 2 2 2 e . . . 
@@ -666,11 +666,11 @@ game.onUpdateInterval(2000, function () {
     100,
     true
     )
-    enemyShip.x = scene.screenWidth()
-    enemyShip.vx = -20
-    enemyShip.y = randint(10, scene.screenHeight() - 10)
-    statusbar_monkey = statusbars.create(15, 2, StatusBarKind.EnemyHealth)
-    statusbar_monkey.setColor(5, 12)
-    statusbar_monkey.max = 100
-    statusbar_monkey.attachToSprite(enemyShip)
+    Red_Car.x = scene.screenWidth()
+    Red_Car.vx = -20
+    Red_Car.y = randint(10, scene.screenHeight() - 10)
+    statusbar_Car = statusbars.create(15, 2, StatusBarKind.EnemyHealth)
+    statusbar_Car.setColor(5, 12)
+    statusbar_Car.max = 100
+    statusbar_Car.attachToSprite(Red_Car)
 })
