@@ -542,6 +542,7 @@ info.onLifeZero(function () {
         ........feeefeef........
         ........fefeffef........
         `, SpriteKind.Food)
+    tiles.destroySpritesOfKind(SpriteKind.Enemy)
     tree.setPosition(74, 85)
     tree.sayText("Monkeys can't save themselves. Only you can prevent habitat loss!")
     timer.after(6000, function () {
