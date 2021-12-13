@@ -1,5 +1,5 @@
 {
-    "name": "Monkey Gun Game 2",
+    "name": "save the rain forest",
     "description": "",
     "dependencies": {
         "device": "*",
@@ -11,7 +11,8 @@
         "Sprite Grid": "github:microsoft/arcade-grid#v1.3.0",
         "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
         "tilemaps": "github:microsoft/pxt-tilemaps#v1.12.0",
-        "Color Fading": "github:jwunderl/pxt-color#v0.2.1"
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.1",
+        "Timers": "github:microsoft/arcade-timers#v1.1.0"
     },
     "files": [
         "main.blocks",
@@ -28,7 +29,7 @@
         "branch": "v1.6.24",
         "tag": "v1.6.24",
         "commits": "https://github.com/microsoft/pxt-arcade/commits/5bea1575ea693e0648a647cbd86cda9776d58f48",
-        "target": "1.7.22",
+        "target": "1.7.24",
         "pxt": "7.2.25",
         "targetId": "arcade"
     },
